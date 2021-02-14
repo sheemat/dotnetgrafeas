@@ -25,3 +25,9 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish
+    - name: Upload WebApp1 Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: csGrafeausReader
+        path:  /home/runner/work/dotnetgrafeas/dotnetgrafeas/csGrafeausReader/bin/Debug/netcoreapp2.1/publish/
+

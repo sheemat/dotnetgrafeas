@@ -3,13 +3,14 @@ using System.IO;
 using System.Net;
 using System.Text.Json;
 
+
 namespace csGrafeausReader
 {
        
     class Program
     {
         static string jsonResponse;
-
+        static string grafeasURL= "ec2-54-212-90-144.us-west-2.compute.amazonaws.com:8080";
 
         static string httpCall(string myUrl)
         {
@@ -43,8 +44,7 @@ namespace csGrafeausReader
 
         static void ReadOccs(string projectName)
         {
-
-            string grURL = "http://ec2-54-212-90-144.us-west-2.compute.amazonaws.com:8080/v1beta1/" + projectName+"/occurrences";
+            string grURL = "http://"+ grafeasURL + "/v1beta1/" + projectName+"/occurrences";
             jsonResponse = httpCall(grURL);
             using (JsonDocument doc = JsonDocument.Parse(jsonResponse))
             {
@@ -56,7 +56,6 @@ namespace csGrafeausReader
                     JsonElement gProjName = gProject.GetProperty("name");
 
                     Console.WriteLine(gProjName);
-                    //ReadOccs(gProjName);
                 }
 
 
@@ -67,7 +66,7 @@ namespace csGrafeausReader
         static void getResponse()
         {
             // Create a request for the URL.
-            string grURL="http://ec2-54-212-90-144.us-west-2.compute.amazonaws.com:8080/v1beta1/projects";
+            string grURL="http://" + grafeasURL + "/v1beta1/projects";
             jsonResponse = httpCall(grURL);
             using (JsonDocument doc = JsonDocument.Parse(jsonResponse))
             {

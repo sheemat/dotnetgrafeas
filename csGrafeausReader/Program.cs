@@ -10,7 +10,7 @@ namespace csGrafeausReader
     class Program
     {
         static string jsonResponse;
-        static string grafeasURL= "ec2-54-212-90-144.us-west-2.compute.amazonaws.com:8080";
+        static string grafeasURL= "ec2-35-170-67-85.compute-1.amazonaws.com:8080";
 
         static string httpCall(string myUrl)
         {
